@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         简历侧边栏
 // @namespace    https://github.com/lNwNl/resume-sidebar-userscript
-// @version      1.0.0
+// @version      1.0.1
 // @description  先点击网页输入框，再从侧边栏选择简历字段填入
 // @match        http://*/*
 // @match        https://*/*
@@ -40,6 +40,8 @@
   // AI 可只编辑 layouts：name 是分类或条目标题，fields 是可点击填写的字段。
   // 所有值都是虚构示例；发布个人版本前请逐项替换、删除不适用字段。
   const text = (label, value) => ({ label, value, kind: 'text' });
+  // date 只接受资料中已有的准确日期；脚本不会根据年月推断或补充具体日期。
+  // 只有年月时请使用 text，例如 text('开始时间', '2024.06')。
   const date = (value) => ({ value, kind: 'date' }); // ISO 格式：YYYY-MM-DD
   const period = (start, end) => [
     { ...date(start), label: '开始时间' },
